@@ -20,12 +20,23 @@
 <p id="result"></p>
 
 <script>
-  document.getElementById("form").addEventListener("submit", async function (e) {
+  alert("✅ Script is running");
+
+  const form = document.getElementById("form");
+  const resultEl = document.getElementById("result");
+
+  if (!form) {
+    alert("❌ Form element not found");
+  }
+
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
+    alert("✅ Submit handler fired");
 
     const emailValue = document.getElementById("email").value;
     const lastnameValue = document.getElementById("lastname").value;
-    const resultEl = document.getElementById("result");
+
+    alert("Values: " + emailValue + " / " + lastnameValue);
 
     const res = await fetch("/api/submit", {
       method: "POST",
@@ -35,6 +46,8 @@
         lastname: lastnameValue
       })
     });
+
+    alert("HTTP status: " + res.status);
 
     const data = await res.json();
     resultEl.innerText = data.success ? "Saved!" : "Error";
